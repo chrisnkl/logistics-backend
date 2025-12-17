@@ -1,4 +1,7 @@
 package nikolaou.christos.backend.order_processing.dto;
 
-public record OrderResponse() {
+import nikolaou.christos.backend.order_processing.utils.OrderStatus;
+import nikolaou.christos.backend.order_processing.utils.ShippingType;
+
+public record OrderResponse(Long id, String customerName, double weight, String destination, ShippingType shippingType, OrderStatus status) {
 }

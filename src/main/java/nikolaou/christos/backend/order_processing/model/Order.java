@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import nikolaou.christos.backend.order_processing.utils.OrderStatus;
+import nikolaou.christos.backend.order_processing.utils.ShippingType;
 
 @Entity
 @Table(name = "orders")

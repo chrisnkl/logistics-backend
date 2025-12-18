@@ -33,7 +33,7 @@ public class Order {
     private double cost;
 
     public Order(OrderRequest orderRequest) {
-        if(orderRequest.id() > 0) this.id = orderRequest.id();
+        if(orderRequest.id() != null && orderRequest.id() > 0) this.id = orderRequest.id();
         this.customerName = orderRequest.customerName();
         this.weight = orderRequest.weight();
         this.destination = orderRequest.destination();

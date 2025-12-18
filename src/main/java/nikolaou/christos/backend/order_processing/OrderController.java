@@ -18,10 +18,9 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping(value = "/process", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Map<String, String>> processOrder(@RequestBody OrderRequest orderRequest) {
-        Map<String, String> response = Map.of("message", "Order is being processed.");
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Long> processOrder(@RequestBody OrderRequest orderRequest) {
+        return orderService.createOrder(orderRequest);
     }
 
     /** Get the status of an order
@@ -29,7 +28,7 @@ public class OrderController {
      * @return the status of the order
      */
     @GetMapping("/status/{orderId}")
-    public String getOrderStatus(@PathVariable Long orderId) {
+    public String getOrderStatus(@PathVariable(required = true) Long orderId) {
         return "Your order #" + orderId + " is being processed.";
     }
 

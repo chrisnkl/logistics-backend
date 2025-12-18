@@ -2,12 +2,10 @@ package nikolaou.christos.backend.order_processing.utils;
 
 public enum OrderStatus {
 
-    ACCEPTED,
+    PENDING,
     PROCESSING,
-    SHIPPED,
-    DELIVERED,
-    CANCELLED,
-    RETURNED,
+    DELAYED,
+    COMPLETED,
     FAILED
 
 }

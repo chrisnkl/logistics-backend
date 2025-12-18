@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import nikolaou.christos.backend.order_processing.dto.OrderRequest;
 import nikolaou.christos.backend.order_processing.utils.OrderStatus;
 import nikolaou.christos.backend.order_processing.utils.ShippingType;
 
@@ -31,5 +32,14 @@ public class Order {
 
     private double cost;
 
+    public Order(OrderRequest orderRequest) {
+        if(orderRequest.id() > 0) this.id = orderRequest.id();
+        this.customerName = orderRequest.customerName();
+        this.weight = orderRequest.weight();
+        this.destination = orderRequest.destination();
+        this.shippingType = orderRequest.shippingType();
+        this.status = OrderStatus.PENDING;
+        this.cost = 0.0;
+    }
 
 }

@@ -61,6 +61,7 @@ public class OrderProcessingService {
         catch(Exception e) {
             log.error("Failed to set cost for order with id {}. Exception: {}", orderId, e.getMessage());
             order.setStatus(OrderStatus.FAILED);
+            throw new FailedCostCalculationException("Failed to calculate cost for order with id " + orderId);
         }
         finally {
             orderRepository.save(order);

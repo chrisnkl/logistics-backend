@@ -29,7 +29,6 @@ public class OrderProcessingService {
     private final OrderRepository orderRepository;
 
     @Async
-    @Transactional
     public void processOrder(Long orderId) {
         Order order = orderRepository.findById(orderId).orElseThrow(() -> new OrderNotExistsException("The order with id " + orderId + " does not exist."));
         double weight = order.getWeight();

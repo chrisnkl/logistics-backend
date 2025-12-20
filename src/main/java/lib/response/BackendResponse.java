@@ -12,7 +12,7 @@ public record BackendResponse(@NotNull Timestamp timestamp, @NotNull int status,
     }
 
     public BackendResponse(int status, String message) {
-        this(new Timestamp(System.currentTimeMillis()), status, message, null);
+        this(new Timestamp(System.currentTimeMillis()), status, message, new Object[0]);
     }
 
 }

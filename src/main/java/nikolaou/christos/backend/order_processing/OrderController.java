@@ -1,8 +1,7 @@
 package nikolaou.christos.backend.order_processing;
 
-import com.nimbusds.jose.shaded.gson.Gson;
+import lib.response.BackendResponse;
 import lombok.AllArgsConstructor;
-import nikolaou.christos.backend.order_processing.dto.OrderProcessResponse;
 import nikolaou.christos.backend.order_processing.dto.OrderRequest;
 import nikolaou.christos.backend.order_processing.dto.OrderResponse;
 import nikolaou.christos.backend.order_processing.service.OrderService;
@@ -19,8 +18,13 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<OrderProcessResponse> processOrder(@RequestBody OrderRequest orderRequest) {
-        return orderService.createOrder(orderRequest);
+    public ResponseEntity<BackendResponse> processOrder(@RequestBody OrderRequest orderRequest) {
+        OrderResponse response = orderService.createOrder(orderRequest);
+        return ResponseEntity.accepted().body(new BackendResponse(
+                HttpStatus.ACCEPTED.value(),
+                "Your order is currently being processed.",
+                response
+        ));
     }
 
     /** Get the status of an order
@@ -28,13 +32,23 @@ public class OrderController {
      * @return the status of the order
      */
     @GetMapping("/status/{orderId}")
-    public ResponseEntity<OrderProcessResponse> getOrderStatus(@PathVariable(required = true) Long orderId) {
-        return orderService.getOrderStatus(orderId);
+    public ResponseEntity<BackendResponse> getOrderStatus(@PathVariable(required = true) Long orderId) {
+        OrderResponse response = orderService.getOrderDetails(orderId);
+        return ResponseEntity.ok(new BackendResponse(
+                HttpStatus.OK.value(),
+                "Order Status Retrieved",
+                response.status()
+        ));
     }
 
     @GetMapping("/{orderId}")
-    public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable Long orderId) {
-        return orderService.getOrderDetails(orderId);
+    public ResponseEntity<BackendResponse> getOrderDetails(@PathVariable Long orderId) {
+        OrderResponse response = orderService.getOrderDetails(orderId);
+        return ResponseEntity.ok(new BackendResponse(
+                HttpStatus.OK.value(),
+                "Order Details Retrieved",
+                response
+        ));
     }
 
 }

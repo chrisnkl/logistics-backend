@@ -3,6 +3,7 @@ package lib.exception;
 import lib.response.BackendResponse;
 import nikolaou.christos.backend.fleet_management.exception.UnsupportedVehicleTypeException;
 import nikolaou.christos.backend.fleet_management.exception.VehicleNotFoundException;
+import nikolaou.christos.backend.order_processing.exception.OrderNotExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,8 +13,8 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(VehicleNotFoundException.class)
-    public ResponseEntity<BackendResponse> handleVehicleNotFoundException(VehicleNotFoundException e) {
+    @ExceptionHandler({VehicleNotFoundException.class, OrderNotExistsException.class})
+    public ResponseEntity<BackendResponse> handleNotFoundExceptions(BackendException e) {
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(new BackendResponse(HttpStatus.NOT_FOUND.value(), e.getMessage()));

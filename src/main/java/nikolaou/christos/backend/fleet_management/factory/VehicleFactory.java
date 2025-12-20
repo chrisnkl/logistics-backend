@@ -1,6 +1,7 @@
 package nikolaou.christos.backend.fleet_management.factory;
 
 import lombok.RequiredArgsConstructor;
+import nikolaou.christos.backend.fleet_management.exception.UnsupportedVehicleTypeException;
 import nikolaou.christos.backend.fleet_management.model.Vehicle;
 import nikolaou.christos.backend.fleet_management.repository.FleetManagementRepository;
 import nikolaou.christos.backend.fleet_management.utils.VehicleType;
@@ -15,8 +16,7 @@ public class VehicleFactory {
     public Vehicle getVehicle(VehicleType vehicleType) {
 
         return fleetManagementRepository.findByType(vehicleType)
-                .orElseThrow(() -> new RuntimeException("Unsupported vehicle type."));
-
+                .orElseThrow(() -> new UnsupportedVehicleTypeException("Unsupported vehicle type."));
     }
 
 }

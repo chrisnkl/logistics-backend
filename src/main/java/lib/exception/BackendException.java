@@ -1,4 +1,4 @@
-package nikolaou.christos.backend.order_processing.exception;
+package lib.exception;
 
 import lombok.Getter;
 

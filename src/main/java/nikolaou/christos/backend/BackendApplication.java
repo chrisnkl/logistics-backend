@@ -2,8 +2,10 @@ package nikolaou.christos.backend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"nikolaou.christos.backend"})
+@EnableAsync
 public class BackendApplication {
 
     public static void main(String[] args) {

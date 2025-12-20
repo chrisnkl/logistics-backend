@@ -20,16 +20,24 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "customerName", nullable = false)
     private String customerName;
 
+    @Column(name = "weight", nullable = false)
     private double weight;
 
+    @Column(name = "destination", nullable = false)
     private String destination;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "shippingType", nullable = false)
     private ShippingType shippingType;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
     private OrderStatus status;
 
+    @Column(name = "cost", nullable = false)
     private double cost;
 
     public Order(OrderRequest orderRequest) {

@@ -39,6 +39,12 @@ public class AnalyticsService {
                 .map(OrderResponse::new)
                 .orElse(null);
 
+        List<String> delayedOrders = orders.stream()
+                .filter(order -> order.getStatus() == OrderStatus.DELAYED)
+                .map(Order::getId)
+                .map(String::valueOf)
+                .toList();
+
         int totalOrders = orders.size();
 
         long totalCompletedOrders = orders.stream()
@@ -63,6 +69,7 @@ public class AnalyticsService {
                 revenue,
                 groupedByDestination,
                 mostExpensiveOrder,
+                delayedOrders,
                 totalOrders,
                 totalCompletedOrders,
                 totalFailedOrders,

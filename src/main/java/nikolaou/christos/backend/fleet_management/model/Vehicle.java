@@ -31,4 +31,11 @@ public class Vehicle {
     @Column(name = "maxSpeed", nullable = false)
     private int maxSpeed;
 
+    public Vehicle(VehicleType type, String licensePlate, double capacity, int maxSpeed) {
+        this.type = type;
+        this.licensePlate = licensePlate;
+        this.capacity = capacity;
+        this.maxSpeed = maxSpeed;
+    }
+
 }

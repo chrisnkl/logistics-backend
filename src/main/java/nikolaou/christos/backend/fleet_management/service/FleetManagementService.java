@@ -31,7 +31,9 @@ public class FleetManagementService {
                 .map(vehicle -> new VehicleResponse(
                         vehicle.getId(),
                         vehicle.getType(),
-                        vehicle.getLicensePlate()
+                        vehicle.getLicensePlate(),
+                        vehicle.getCapacity(),
+                        vehicle.getMaxSpeed()
                 ));
     }
 
@@ -40,7 +42,9 @@ public class FleetManagementService {
                 .map(vehicle -> new VehicleResponse(
                         vehicle.getId(),
                         vehicle.getType(),
-                        vehicle.getLicensePlate()
+                        vehicle.getLicensePlate(),
+                        vehicle.getCapacity(),
+                        vehicle.getMaxSpeed()
                 ))
                 .orElseThrow(() -> new UnsupportedVehicleTypeException("Vehicle type not found."));
     }

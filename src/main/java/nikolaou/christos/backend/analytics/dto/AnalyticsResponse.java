@@ -9,6 +9,7 @@ public record AnalyticsResponse(
         double revenue,
         Map<String, List<OrderResponse>> groupedByDestination,
         OrderResponse mostExpensiveOrder,
+        List<String> delayedOrders,
         long totalOrders,
         long totalCompletedOrders,
         long totalFailedOrders,

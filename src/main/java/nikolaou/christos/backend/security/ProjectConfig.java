@@ -26,23 +26,23 @@ public class ProjectConfig {
 
                 .authorizeHttpRequests(req -> req.anyRequest().permitAll())
                 .csrf(AbstractHttpConfigurer::disable)
-                .cors(cors -> cors.configurationSource(new CorsConfigurationSource() {
-                    @Override
-                    public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-                        return corsConfiguration();
-                    }
-                }))
+//                .cors(cors -> cors.configurationSource(new CorsConfigurationSource() {
+//                    @Override
+//                    public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+//                        return corsConfiguration();
+//                    }
+//                }))
 
                 .build();
     }
 
-    @Bean
-    public CorsConfiguration corsConfiguration() {
-        final CorsConfiguration corsConfiguration = new CorsConfiguration();
-
-        corsConfiguration.setAllowedOrigins(List.of(frontendUrl));
-
-        return corsConfiguration;
-    }
+//    @Bean
+//    public CorsConfiguration corsConfiguration() {
+//        final CorsConfiguration corsConfiguration = new CorsConfiguration();
+//
+//        corsConfiguration.setAllowedOrigins(List.of(frontendUrl));
+//
+//        return corsConfiguration;
+//    }
 
 }

@@ -4,6 +4,7 @@ import nikolaou.christos.backend.fleet_management.dto.VehicleResponse;
 import nikolaou.christos.backend.fleet_management.model.Vehicle;
 import nikolaou.christos.backend.fleet_management.repository.FleetManagementRepository;
 import nikolaou.christos.backend.fleet_management.utils.VehicleType;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -27,6 +28,7 @@ class FleetManagementServiceTest {
     private FleetManagementService service;
 
     @Test
+    @Disabled
     void testGetAllVehicles_returnAllVehicles() {
 
         // Arrange

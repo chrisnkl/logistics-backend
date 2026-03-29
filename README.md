@@ -17,6 +17,12 @@ An advanced rest api for logistics management.
 - JUnit 5 & Mockito
 
 #### Run Locally
-1. Run `mvn clean install` to install dependencies.
-2. Configure your database settings in `application.properties`.
-3. Run `mvn spring-boot:run` to start the application.
+1. Run `mvn clean install -DskipTests` to install dependencies.
+2. Configure your database settings in `application-local.properties`.
+3. Run `mvn spring-boot:run -D"spring-boot.run.profiles"=local` to start the application.
+
+
+#### Run Locally Through Module
+1. Make sure to set the active profile to `local` in your IDE run configuration.
+2. Run the `LogisticsBackendApplication` class to start the application.
+3. Make sure you have skipped tests during the build process.

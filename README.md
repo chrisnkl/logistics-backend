@@ -19,8 +19,8 @@ An advanced rest api for logistics management.
 #### Run Locally
 1. Run `mvn clean install -DskipTests` to install dependencies.
 2. Configure your database settings in `application-local.properties`.
-3. Run `mvn spring-boot:run -D"spring-boot.run.profiles"=local` to start the application.
-
+3. Run `mvn spring-boot:run` to start the application.
+4. Make sure the application is running with `local` profile.
 
 #### Run Locally Through Module
 1. Make sure to set the active profile to `local` in your IDE run configuration.
